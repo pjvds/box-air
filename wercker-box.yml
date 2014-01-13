@@ -1,0 +1,28 @@
+name: air
+description: Box that is running Wine and the Adobe AIR SDK
+inherits: pjvds/wine@0.0.3
+version: 0.0.1
+keywords:
+  - adobe-air
+script: |-
+  export AIR_HOME "/opt/air_sdk_3.9"
+  export JVM_HOME "/opt/jvm"
+
+  sudo apt-get update ; sudo apt-get upgrade -y
+  sudo apt-get install wget unzip software-properties-common python-software-properties -y
+
+  # Install Adobe Air SDK
+  mkdir -p $AIR_HOME
+  cd $AIR_HOME ; wget http://airdownload.adobe.com/air/win/download/latest/AIRSDK_Compiler.zip
+  cd $AIR_HOME ; unzip AIRSDK_Compiler.zip
+  echo "PATH=\"$AIR_HOME:$PATH\"" > /etc/environment
+
+  # Install Java
+  sudo add-apt-repository ppa:webupd8team/java
+  sudo apt-get update
+  sudo echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+  sudo echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+  sudo apt-get install oracle-java7-installer -y
+
+  # Set java environment variables
+  sudo apt-get install oracle-java7-set-default 
