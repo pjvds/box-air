@@ -13,10 +13,10 @@ script: |-
   sudo apt-get install wget unzip software-properties-common python-software-properties -y
 
   # Install Adobe Air SDK
-  mkdir -p $AIR_HOME
+  sudo mkdir -p $AIR_HOME
   cd $AIR_HOME ; wget http://airdownload.adobe.com/air/win/download/latest/AIRSDK_Compiler.zip
   cd $AIR_HOME ; unzip AIRSDK_Compiler.zip
-  echo "PATH=\"$AIR_HOME:$PATH\"" > /etc/environment
+  echo "PATH=\"$AIR_HOME:$PATH\"" | sudo tee /etc/environment
 
   # Install Java
   sudo add-apt-repository ppa:webupd8team/java
