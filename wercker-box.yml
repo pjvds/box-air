@@ -14,8 +14,9 @@ script: |-
 
   # Install Adobe Air SDK
   sudo mkdir -p $AIR_HOME
-  cd $AIR_HOME ; wget http://airdownload.adobe.com/air/win/download/latest/AIRSDK_Compiler.zip
-  cd $AIR_HOME ; unzip AIRSDK_Compiler.zip
+  cd $AIR_HOME
+  sudo wget http://airdownload.adobe.com/air/win/download/latest/AIRSDK_Compiler.zip
+  sudo unzip AIRSDK_Compiler.zip
   echo "PATH=\"$AIR_HOME:$PATH\"" | sudo tee /etc/environment
 
   # Install Java
