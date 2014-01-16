@@ -28,3 +28,8 @@ script: |-
 
   # Set java environment variables
   sudo apt-get install oracle-java7-set-default 
+
+  # Install java for windows
+  wget -O installer.exe http://javadl.sun.com/webapps/download/AutoDL?BundleId=83385
+  wine installer.exe /s
+  rm installer.exe
