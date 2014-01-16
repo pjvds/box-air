@@ -1,7 +1,7 @@
 name: air
 description: Box that is running Wine and the Adobe AIR SDK
 inherits: pjvds/wine@0.0.3
-version: 0.0.4
+version: 0.0.5
 type: main
 keywords:
   - adobe-air
