@@ -6,17 +6,16 @@ type: main
 keywords:
   - adobe-air
 script: |-
-  AIR_HOME='/opt/air_sdk_3.9'
-  JVM_HOME='/opt/jvm'
+  AIR_HOME=$HOME/air_sdk_3.9
 
   sudo apt-get update ; sudo apt-get upgrade -y
   sudo apt-get install wget unzip software-properties-common python-software-properties -y
 
   # Install Adobe Air SDK
-  sudo mkdir -p $AIR_HOME
+  mkdir -p $AIR_HOME
   cd $AIR_HOME
-  sudo wget http://airdownload.adobe.com/air/win/download/latest/AIRSDK_Compiler.zip
-  sudo unzip AIRSDK_Compiler.zip
+  wget http://airdownload.adobe.com/air/win/download/latest/AIRSDK_Compiler.zip
+  unzip AIRSDK_Compiler.zip
   echo "PATH=\"$AIR_HOME:$PATH\"" | sudo tee /etc/environment
 
   # Install Java
