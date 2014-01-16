@@ -28,8 +28,12 @@ script: |-
 
   # Set java environment variables
   sudo apt-get install oracle-java7-set-default 
-
+  
+  # Install and setup Xvfb
+  sudo apt-get install xvfb -y
+  Xvfb :1 -screen 0 1024x768x24 &
+  
   # Install java for windows
   wget -O installer.exe http://javadl.sun.com/webapps/download/AutoDL?BundleId=83385
-  wine installer.exe /s
+  xvfb-run wine installer.exe /s
   rm installer.exe
