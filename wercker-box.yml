@@ -37,5 +37,5 @@ script: |-
   
   # Install java for windows
   wget -O installer.exe http://javadl.sun.com/webapps/download/AutoDL?BundleId=83385
-  xvfb-run -e /dev/stdout wine installer.exe /s
+  DISPLAY=:99.0 wine installer.exe /s
   rm installer.exe
