@@ -32,9 +32,10 @@ script: |-
   # Install and setup Xvfb
   sudo apt-get install xvfb -y
   export DISPLAY=:99.0
-  start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset
+  start-stop-daemon --start --quiet --pidfile /var/run/xvfb.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset
+  sleep 5
   
   # Install java for windows
   wget -O installer.exe http://javadl.sun.com/webapps/download/AutoDL?BundleId=83385
-  xvfb-run wine installer.exe /s
+  xvfb-run -e /dev/stdout wine installer.exe /s
   rm installer.exe
